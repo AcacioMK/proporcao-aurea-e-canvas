@@ -1,0 +1,38 @@
+<canvas style="background-color: black;" id="canvas" width=1000 height=650></canvas>
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    
+    var telaY = 600;
+    var telaX = telaY * 1.618;
+    var cor = "white";
+    var pX1 = 10;
+    var pY1 = 10;
+    var w1 = telaX / 1.618;
+    var h1 = w1;
+    var rotate = 0;
+    attDados();
+    function attDados(){
+        var cont = 0;
+        while (cont < 8){
+            criaRec();
+            pX1 = w1 * 1.618;
+            pY1 = 0;
+            rotate = 90;
+            w1 = w1 / 1.618;
+            h1 = w1;
+            cont ++;
+        }
+    }
+    
+    function criaRec(){
+        ctx.strokeStyle = cor;
+        ctx.translate(pX1, pY1);
+        ctx.rotate(rotate * Math.PI / 180);
+        ctx.strokeRect(0, 0, w1, h1);
+        ctx.moveTo(0, h1);
+        ctx.quadraticCurveTo(0, 0, h1, 0);
+        ctx.stroke();
+    }
+    
+</script>
